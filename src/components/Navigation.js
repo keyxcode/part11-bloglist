@@ -1,26 +1,27 @@
-import { Link } from "react-router-dom";
-import { Header, Flex, Button, Anchor } from "@mantine/core";
-import { useContext } from "react";
-import UserContext from "../UserContext";
+import { Link } from 'react-router-dom'
+import { Header, Flex, Button, Anchor } from '@mantine/core'
+import { useContext } from 'react'
+import UserContext from '../UserContext'
+import { React } from 'react'
 
 const Navigation = ({ notifyWith }) => {
-  const [user, userDispatch] = useContext(UserContext);
+  const [user, userDispatch] = useContext(UserContext)
 
   const handleLogout = () => {
-    userDispatch({ type: "CLEAR" });
-    window.localStorage.removeItem("loggedBlogUser");
-    const msg = "logout success";
-    notifyWith(msg);
-  };
+    userDispatch({ type: 'CLEAR' })
+    window.localStorage.removeItem('loggedBlogUser')
+    const msg = 'logout success'
+    notifyWith(msg)
+  }
 
   return (
     <Header height={60} p="md">
       <Flex justify="space-between" wrap="wrap">
         <Flex gap="md">
-          <Anchor component={Link} to={"/"}>
+          <Anchor component={Link} to={'/'}>
             blogs
           </Anchor>
-          <Anchor component={Link} to={"/users"}>
+          <Anchor component={Link} to={'/users'}>
             users
           </Anchor>
         </Flex>
@@ -32,7 +33,7 @@ const Navigation = ({ notifyWith }) => {
         </Flex>
       </Flex>
     </Header>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

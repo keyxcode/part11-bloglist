@@ -1,56 +1,57 @@
-import { Button, Paper, Anchor, Grid, Text, Title, Box } from "@mantine/core";
-import { useMutation, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
-import blogService from "../services/blogs";
-import { useUserValue } from "../UserContext";
+import { Button, Paper, Anchor, Grid, Text, Title, Box } from '@mantine/core'
+import { useMutation, useQueryClient } from 'react-query'
+import { useNavigate } from 'react-router-dom'
+import blogService from '../services/blogs'
+import { useUserValue } from '../UserContext'
+import { React } from 'react'
 
 const BlogDetails = ({ blog, notifyWith }) => {
-  const user = useUserValue();
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  const user = useUserValue()
+  const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
   const updateBlogMutation = useMutation(blogService.update, {
     onSuccess: ({ title, author }) => {
-      queryClient.invalidateQueries("blogs");
-      const msg = `liked blog ${title} by ${author}`;
-      notifyWith(msg);
+      queryClient.invalidateQueries('blogs')
+      const msg = `liked blog ${title} by ${author}`
+      notifyWith(msg)
     },
     onError: ({ message }) => {
-      const msg = `an error occured: ${message}`;
-      notifyWith(msg, "ERROR");
+      const msg = `an error occured: ${message}`
+      notifyWith(msg, 'ERROR')
     },
-  });
+  })
 
   const deleteBlogMutation = useMutation(blogService.deleteBlog, {
     onSuccess: () => {
-      queryClient.invalidateQueries("blogs");
-      const msg = `deletion success`;
-      notifyWith(msg);
-      navigate("/");
+      queryClient.invalidateQueries('blogs')
+      const msg = 'deletion success'
+      notifyWith(msg)
+      navigate('/')
     },
     onError: ({ message }) => {
-      const msg = `an error occured: ${message}`;
-      notifyWith(msg, "ERROR");
+      const msg = `an error occured: ${message}`
+      notifyWith(msg, 'ERROR')
     },
-  });
+  })
 
   const handleClickLike = () => {
     const updatedBlog = {
       ...blog,
       likes: blog.likes + 1,
-    };
+    }
 
-    blogService.setToken(user.token);
-    updateBlogMutation.mutate(updatedBlog);
-  };
+    blogService.setToken(user.token)
+    updateBlogMutation.mutate(updatedBlog)
+  }
 
   const handleClickDelete = () => {
     // eslint-disable-next-line no-alert
     if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
-      blogService.setToken(user.token);
-      deleteBlogMutation.mutate(blog.id);
+      blogService.setToken(user.token)
+      deleteBlogMutation.mutate(blog.id)
     }
-  };
+  }
 
   return (
     <Box>
@@ -64,7 +65,7 @@ const BlogDetails = ({ blog, notifyWith }) => {
             <Anchor
               component="a"
               href={blog.url}
-              sx={{ wordWrap: "break-word" }}
+              sx={{ wordWrap: 'break-word' }}
             >
               {blog.url}
             </Anchor>
@@ -73,7 +74,7 @@ const BlogDetails = ({ blog, notifyWith }) => {
           <Grid.Col sm={6}>
             <Button onClick={handleClickLike} mb="md">
               like
-            </Button>{" "}
+            </Button>{' '}
             {blog.likes}
             <div>
               {blog.user.username === user.username && (
@@ -86,7 +87,7 @@ const BlogDetails = ({ blog, notifyWith }) => {
         </Grid>
       </Paper>
     </Box>
-  );
-};
+  )
+}
 
-export default BlogDetails;
+export default BlogDetails

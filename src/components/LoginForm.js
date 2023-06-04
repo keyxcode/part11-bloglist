@@ -1,43 +1,44 @@
-import { TextInput, Button, Title, Container, Flex } from "@mantine/core";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import loginService from "../services/login";
-import { useUserDispatch } from "../UserContext";
+import { TextInput, Button, Title, Container, Flex } from '@mantine/core'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import loginService from '../services/login'
+import { useUserDispatch } from '../UserContext'
+import { React } from 'react'
 
 const LoginForm = ({ notifyWith }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-  const userDispatch = useUserDispatch();
+  const userDispatch = useUserDispatch()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLogin = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      const loggedUser = await loginService.login({ username, password });
-      window.localStorage.setItem("loggedBlogUser", JSON.stringify(loggedUser));
+      const loggedUser = await loginService.login({ username, password })
+      window.localStorage.setItem('loggedBlogUser', JSON.stringify(loggedUser))
 
-      const msg = `welcome ${loggedUser.name}`;
-      notifyWith(msg);
+      const msg = `welcome ${loggedUser.name}`
+      notifyWith(msg)
 
-      navigate("/");
-      userDispatch({ type: "SET", payload: loggedUser });
+      navigate('/')
+      userDispatch({ type: 'SET', payload: loggedUser })
 
-      setUsername("");
-      setPassword("");
+      setUsername('')
+      setPassword('')
     } catch (exception) {
-      console.log(exception);
+      console.log(exception)
 
-      const msg = "wrong user name or password";
-      notifyWith(msg, "ERROR");
+      const msg = 'wrong user name or password'
+      notifyWith(msg, 'ERROR')
     }
-  };
+  }
 
   const handleClickGuest = () => {
-    setUsername("guest");
-    setPassword("123");
-  };
+    setUsername('guest')
+    setPassword('123')
+  }
 
   return (
     <Container mt="md">
@@ -75,7 +76,7 @@ const LoginForm = ({ notifyWith }) => {
         </Flex>
       </form>
     </Container>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

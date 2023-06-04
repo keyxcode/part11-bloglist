@@ -1,16 +1,17 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { Button, Box } from "@mantine/core";
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { Button, Box } from '@mantine/core'
+import { React } from 'react'
 
 const Togglable = (props) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
-  const hideWhenVisible = { display: visible ? "none" : "" };
-  const showWhenVisible = { display: visible ? "" : "none" };
+  const hideWhenVisible = { display: visible ? 'none' : '' }
+  const showWhenVisible = { display: visible ? '' : 'none' }
 
   const toggleVisibility = () => {
-    setVisible(!visible);
-  };
+    setVisible(!visible)
+  }
 
   return (
     <Box mb="md">
@@ -26,11 +27,11 @@ const Togglable = (props) => {
         </Button>
       </div>
     </Box>
-  );
-};
+  )
+}
 
 Togglable.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
-};
+}
 
-export default Togglable;
+export default Togglable

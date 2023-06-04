@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 import {
   TextInput,
   Button,
@@ -7,38 +7,39 @@ import {
   ScrollArea,
   Grid,
   Text,
-} from "@mantine/core";
-import { useMutation, useQueryClient } from "react-query";
-import blogService from "../services/blogs";
-import { useUserValue } from "../UserContext";
+} from '@mantine/core'
+import { useMutation, useQueryClient } from 'react-query'
+import blogService from '../services/blogs'
+import { useUserValue } from '../UserContext'
+import { React } from 'react'
 
 const CommentSection = ({ blog, notifyWith }) => {
-  const [comment, setComment] = useState("");
-  const queryClient = useQueryClient();
-  const user = useUserValue();
+  const [comment, setComment] = useState('')
+  const queryClient = useQueryClient()
+  const user = useUserValue()
 
   const commentBlogMutation = useMutation(blogService.commentBlog, {
     onSuccess: () => {
-      queryClient.invalidateQueries("blogs");
-      notifyWith("comment posted");
+      queryClient.invalidateQueries('blogs')
+      notifyWith('comment posted')
     },
     onError: ({ message }) => {
-      const msg = `an error occured: ${message}`;
-      notifyWith(msg, "ERROR");
+      const msg = `an error occured: ${message}`
+      notifyWith(msg, 'ERROR')
     },
-  });
+  })
 
   const handleSubmitComment = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const { id } = blog;
-    const commentObject = { content: comment };
+    const { id } = blog
+    const commentObject = { content: comment }
 
-    blogService.setToken(user.token);
-    commentBlogMutation.mutate({ id, commentObject });
+    blogService.setToken(user.token)
+    commentBlogMutation.mutate({ id, commentObject })
 
-    setComment("");
-  };
+    setComment('')
+  }
 
   return (
     <Box>
@@ -74,7 +75,7 @@ const CommentSection = ({ blog, notifyWith }) => {
           ))}
       </ScrollArea.Autosize>
     </Box>
-  );
-};
+  )
+}
 
-export default CommentSection;
+export default CommentSection

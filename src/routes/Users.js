@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
-import { Anchor, Table } from "@mantine/core";
+import { Link } from 'react-router-dom'
+import { Anchor, Table } from '@mantine/core'
+import { React } from 'react'
 
 const Users = ({ usersResult, users }) => {
   if (usersResult.isLoading) {
-    return <div>loading users...</div>;
+    return <div>loading users...</div>
   }
   if (usersResult.isError) {
-    return <div>Error: {usersResult.error}</div>;
+    return <div>Error: {usersResult.error}</div>
   }
 
   return (
@@ -30,7 +31,7 @@ const Users = ({ usersResult, users }) => {
         ))}
       </tbody>
     </Table>
-  );
-};
+  )
+}
 
-export default Users;
+export default Users

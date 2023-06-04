@@ -1,5 +1,6 @@
-import { Stack, Container, Text, ScrollArea } from "@mantine/core";
-import Blog from "../components/Blog";
+import { Stack, Container, Text, ScrollArea } from '@mantine/core'
+import Blog from '../components/Blog'
+import { React } from 'react'
 
 const User = ({ user }) => (
   <Container>
@@ -15,6 +16,6 @@ const User = ({ user }) => (
       </Stack>
     </ScrollArea.Autosize>
   </Container>
-);
+)
 
-export default User;
+export default User

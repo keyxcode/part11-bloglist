@@ -1,12 +1,13 @@
-import { Flex } from "@mantine/core";
-import CommentSection from "../components/CommentSection";
-import BlogDetails from "../components/BlogDetails";
+import { Flex } from '@mantine/core'
+import CommentSection from '../components/CommentSection'
+import BlogDetails from '../components/BlogDetails'
+import { React } from 'react'
 
 const Blog = ({ blog, notifyWith }) => (
-  <Flex direction="column" sx={{ height: "100%" }}>
+  <Flex direction="column" sx={{ height: '100%' }}>
     <BlogDetails blog={blog} notifyWith={notifyWith} />
     <CommentSection blog={blog} notifyWith={notifyWith} />
   </Flex>
-);
+)
 
-export default Blog;
+export default Blog

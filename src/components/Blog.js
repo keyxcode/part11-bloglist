@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { Paper, Text, createStyles, Title } from "@mantine/core";
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { Paper, Text, createStyles, Title } from '@mantine/core'
+import { React } from 'react'
 
 const useStyles = createStyles((theme) => ({
   blogPaper: {
     padding: theme.spacing.md,
 
-    "&:hover": {
+    '&:hover': {
       backgroundColor:
-        theme.colorScheme === "dark"
+        theme.colorScheme === 'dark'
           ? theme.colors.dark[8]
           : theme.colors.gray[1],
     },
   },
-}));
+}))
 
 const Blog = ({ blog }) => {
-  const { classes } = useStyles();
+  const { classes } = useStyles()
 
   return (
     <Paper
@@ -30,15 +31,15 @@ const Blog = ({ blog }) => {
       <Text>
         <Title order={1} size="h3">
           {blog.title}
-        </Title>{" "}
+        </Title>{' '}
         {blog.author}
       </Text>
     </Paper>
-  );
-};
+  )
+}
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
-};
+}
 
-export default Blog;
+export default Blog

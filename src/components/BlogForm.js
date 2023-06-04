@@ -1,21 +1,22 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { TextInput, Button, Grid } from "@mantine/core";
+import { useState } from 'react'
+import PropTypes from 'prop-types'
+import { TextInput, Button, Grid } from '@mantine/core'
+import { React, } from 'react'
 
 const BlogForm = ({ createBlog }) => {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [url, setUrl] = useState("");
+  const [title, setTitle] = useState('')
+  const [author, setAuthor] = useState('')
+  const [url, setUrl] = useState('')
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    createBlog({ title, author, url });
+    createBlog({ title, author, url })
 
-    setTitle("");
-    setAuthor("");
-    setUrl("");
-  };
+    setTitle('')
+    setAuthor('')
+    setUrl('')
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -56,11 +57,11 @@ const BlogForm = ({ createBlog }) => {
         create
       </Button>
     </form>
-  );
-};
+  )
+}
 
 BlogForm.propTypes = {
   createBlog: PropTypes.func.isRequired,
-};
+}
 
-export default BlogForm;
+export default BlogForm
