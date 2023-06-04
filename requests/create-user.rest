@@ -1,0 +1,58 @@
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "test",
+    "name": "test_user",
+    "password": "123"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "test2",
+    "name": "test_user2",
+    "password": "123"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "test3",
+    "name": "test_user3",
+    "password": "123"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "test",
+    "name": "test_user",
+    "password": "12"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "test4",
+    "name": "test_user4",
+    "password": "123"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "guest",
+    "name": "guest",
+    "password": "123"
+}
