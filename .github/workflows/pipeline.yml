@@ -31,12 +31,12 @@ jobs:
       #     command: npm run test:e2e
       #     start: npm run start-prod
       #     wait-on: http://localhost:5001
-      # - name: Deploy to Render
-      #   if: ${{ github.event_name == 'push' }}
-      #   uses: sws2apps/render-deployment@v1.2.0
-      #   with:
-      #     serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-      #     apiKey: ${{ secrets.RENDER_API_KEY }}
+      - name: Deploy to Render
+        if: ${{ github.event_name == 'push' }}
+        uses: sws2apps/render-deployment@v1.2.0
+        with:
+          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+          apiKey: ${{ secrets.RENDER_API_KEY }}
 
       # - name: Test Success
       #   uses: rjstone/discord-webhook-notify@v1
@@ -63,4 +63,4 @@ jobs:
         uses: anothrNick/github-tag-action@c360518fb8131e99795f8208f8a6105ceca55ec2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # DEFAULT_BUMP: patch
+          DEFAULT_BUMP: patch
